@@ -18,7 +18,7 @@ type BaseCmd interface {
 	Wait() error
 }
 
-//go:generate counterfeiter . Cmd
+//go:generate counterfeiter -o commandfakes/cmd.go . Cmd
 type Cmd interface {
 	BaseCmd
 
@@ -49,7 +49,7 @@ type Cmd interface {
 	GetSysProcAttr() *syscall.SysProcAttr
 	SetSysProcAttr(*syscall.SysProcAttr) Cmd
 
-	GetProcess() *os.Process
+	GetProcess() Process
 	SetProcess(process *os.Process) Cmd
 
 	GetProcessState() *os.ProcessState
@@ -177,8 +177,8 @@ func (s *Shim) SetSysProcAttr(sysProcAttr *syscall.SysProcAttr) Cmd {
 	return s
 }
 
-func (s *Shim) GetProcess() *os.Process {
-	return s.cmd.Process
+func (s *Shim) GetProcess() Process {
+	return NewProcess(s.cmd.Process)
 }
 
 func (s *Shim) SetProcess(process *os.Process) Cmd {

@@ -7,6 +7,7 @@ import (
 	"syscall"
 
 	command "github.com/BooleanCat/go-command"
+	fakes "github.com/BooleanCat/go-command/commandfakes"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -21,6 +22,10 @@ var _ = Describe("GoCommand", func() {
 	Describe("Cmd", func() {
 		It("is implemented by Shim", func() {
 			_ = command.Cmd(new(command.Shim))
+		})
+
+		It("is implemented by FakeCmd", func() {
+			_ = command.Cmd(new(fakes.FakeCmd))
 		})
 	})
 
@@ -108,9 +113,9 @@ var _ = Describe("GoCommand", func() {
 
 		Describe("SetProcess/GetProcess", func() {
 			It("delegates to the underlying cmd.Process", func() {
-				process := new(os.Process)
+				process := &os.Process{Pid: 4}
 				cmd.SetProcess(process)
-				Expect(cmd.GetProcess()).To(BeIdenticalTo(process))
+				Expect(cmd.GetProcess().GetPid()).To(Equal(4))
 			})
 		})
 
