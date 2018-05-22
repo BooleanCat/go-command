@@ -102,17 +102,6 @@ type FakeCmd struct {
 	getPathReturnsOnCall map[int]struct {
 		result1 string
 	}
-	SetPathStub        func(string) command.Cmd
-	setPathMutex       sync.RWMutex
-	setPathArgsForCall []struct {
-		arg1 string
-	}
-	setPathReturns struct {
-		result1 command.Cmd
-	}
-	setPathReturnsOnCall map[int]struct {
-		result1 command.Cmd
-	}
 	GetArgsStub        func() []string
 	getArgsMutex       sync.RWMutex
 	getArgsArgsForCall []struct{}
@@ -121,17 +110,6 @@ type FakeCmd struct {
 	}
 	getArgsReturnsOnCall map[int]struct {
 		result1 []string
-	}
-	SetArgsStub        func([]string) command.Cmd
-	setArgsMutex       sync.RWMutex
-	setArgsArgsForCall []struct {
-		arg1 []string
-	}
-	setArgsReturns struct {
-		result1 command.Cmd
-	}
-	setArgsReturnsOnCall map[int]struct {
-		result1 command.Cmd
 	}
 	GetEnvStub        func() []string
 	getEnvMutex       sync.RWMutex
@@ -142,17 +120,6 @@ type FakeCmd struct {
 	getEnvReturnsOnCall map[int]struct {
 		result1 []string
 	}
-	SetEnvStub        func([]string) command.Cmd
-	setEnvMutex       sync.RWMutex
-	setEnvArgsForCall []struct {
-		arg1 []string
-	}
-	setEnvReturns struct {
-		result1 command.Cmd
-	}
-	setEnvReturnsOnCall map[int]struct {
-		result1 command.Cmd
-	}
 	GetDirStub        func() string
 	getDirMutex       sync.RWMutex
 	getDirArgsForCall []struct{}
@@ -161,17 +128,6 @@ type FakeCmd struct {
 	}
 	getDirReturnsOnCall map[int]struct {
 		result1 string
-	}
-	SetDirStub        func(string) command.Cmd
-	setDirMutex       sync.RWMutex
-	setDirArgsForCall []struct {
-		arg1 string
-	}
-	setDirReturns struct {
-		result1 command.Cmd
-	}
-	setDirReturnsOnCall map[int]struct {
-		result1 command.Cmd
 	}
 	GetStdinStub        func() io.Reader
 	getStdinMutex       sync.RWMutex
@@ -182,17 +138,6 @@ type FakeCmd struct {
 	getStdinReturnsOnCall map[int]struct {
 		result1 io.Reader
 	}
-	SetStdinStub        func(io.Reader) command.Cmd
-	setStdinMutex       sync.RWMutex
-	setStdinArgsForCall []struct {
-		arg1 io.Reader
-	}
-	setStdinReturns struct {
-		result1 command.Cmd
-	}
-	setStdinReturnsOnCall map[int]struct {
-		result1 command.Cmd
-	}
 	GetStdoutStub        func() io.Writer
 	getStdoutMutex       sync.RWMutex
 	getStdoutArgsForCall []struct{}
@@ -201,17 +146,6 @@ type FakeCmd struct {
 	}
 	getStdoutReturnsOnCall map[int]struct {
 		result1 io.Writer
-	}
-	SetStdoutStub        func(io.Writer) command.Cmd
-	setStdoutMutex       sync.RWMutex
-	setStdoutArgsForCall []struct {
-		arg1 io.Writer
-	}
-	setStdoutReturns struct {
-		result1 command.Cmd
-	}
-	setStdoutReturnsOnCall map[int]struct {
-		result1 command.Cmd
 	}
 	GetStderrStub        func() io.Writer
 	getStderrMutex       sync.RWMutex
@@ -222,17 +156,6 @@ type FakeCmd struct {
 	getStderrReturnsOnCall map[int]struct {
 		result1 io.Writer
 	}
-	SetStderrStub        func(io.Writer) command.Cmd
-	setStderrMutex       sync.RWMutex
-	setStderrArgsForCall []struct {
-		arg1 io.Writer
-	}
-	setStderrReturns struct {
-		result1 command.Cmd
-	}
-	setStderrReturnsOnCall map[int]struct {
-		result1 command.Cmd
-	}
 	GetExtraFilesStub        func() []*os.File
 	getExtraFilesMutex       sync.RWMutex
 	getExtraFilesArgsForCall []struct{}
@@ -241,17 +164,6 @@ type FakeCmd struct {
 	}
 	getExtraFilesReturnsOnCall map[int]struct {
 		result1 []*os.File
-	}
-	SetExtraFilesStub        func([]*os.File) command.Cmd
-	setExtraFilesMutex       sync.RWMutex
-	setExtraFilesArgsForCall []struct {
-		arg1 []*os.File
-	}
-	setExtraFilesReturns struct {
-		result1 command.Cmd
-	}
-	setExtraFilesReturnsOnCall map[int]struct {
-		result1 command.Cmd
 	}
 	GetSysProcAttrStub        func() *syscall.SysProcAttr
 	getSysProcAttrMutex       sync.RWMutex
@@ -262,17 +174,6 @@ type FakeCmd struct {
 	getSysProcAttrReturnsOnCall map[int]struct {
 		result1 *syscall.SysProcAttr
 	}
-	SetSysProcAttrStub        func(*syscall.SysProcAttr) command.Cmd
-	setSysProcAttrMutex       sync.RWMutex
-	setSysProcAttrArgsForCall []struct {
-		arg1 *syscall.SysProcAttr
-	}
-	setSysProcAttrReturns struct {
-		result1 command.Cmd
-	}
-	setSysProcAttrReturnsOnCall map[int]struct {
-		result1 command.Cmd
-	}
 	GetProcessStub        func() command.Process
 	getProcessMutex       sync.RWMutex
 	getProcessArgsForCall []struct{}
@@ -282,17 +183,6 @@ type FakeCmd struct {
 	getProcessReturnsOnCall map[int]struct {
 		result1 command.Process
 	}
-	SetProcessStub        func(process *os.Process) command.Cmd
-	setProcessMutex       sync.RWMutex
-	setProcessArgsForCall []struct {
-		process *os.Process
-	}
-	setProcessReturns struct {
-		result1 command.Cmd
-	}
-	setProcessReturnsOnCall map[int]struct {
-		result1 command.Cmd
-	}
 	GetProcessStateStub        func() *os.ProcessState
 	getProcessStateMutex       sync.RWMutex
 	getProcessStateArgsForCall []struct{}
@@ -301,17 +191,6 @@ type FakeCmd struct {
 	}
 	getProcessStateReturnsOnCall map[int]struct {
 		result1 *os.ProcessState
-	}
-	SetProcessStateStub        func(*os.ProcessState) command.Cmd
-	setProcessStateMutex       sync.RWMutex
-	setProcessStateArgsForCall []struct {
-		arg1 *os.ProcessState
-	}
-	setProcessStateReturns struct {
-		result1 command.Cmd
-	}
-	setProcessStateReturnsOnCall map[int]struct {
-		result1 command.Cmd
 	}
 	invocations      map[string][][]interface{}
 	invocationsMutex sync.RWMutex
@@ -692,54 +571,6 @@ func (fake *FakeCmd) GetPathReturnsOnCall(i int, result1 string) {
 	}{result1}
 }
 
-func (fake *FakeCmd) SetPath(arg1 string) command.Cmd {
-	fake.setPathMutex.Lock()
-	ret, specificReturn := fake.setPathReturnsOnCall[len(fake.setPathArgsForCall)]
-	fake.setPathArgsForCall = append(fake.setPathArgsForCall, struct {
-		arg1 string
-	}{arg1})
-	fake.recordInvocation("SetPath", []interface{}{arg1})
-	fake.setPathMutex.Unlock()
-	if fake.SetPathStub != nil {
-		return fake.SetPathStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setPathReturns.result1
-}
-
-func (fake *FakeCmd) SetPathCallCount() int {
-	fake.setPathMutex.RLock()
-	defer fake.setPathMutex.RUnlock()
-	return len(fake.setPathArgsForCall)
-}
-
-func (fake *FakeCmd) SetPathArgsForCall(i int) string {
-	fake.setPathMutex.RLock()
-	defer fake.setPathMutex.RUnlock()
-	return fake.setPathArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetPathReturns(result1 command.Cmd) {
-	fake.SetPathStub = nil
-	fake.setPathReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetPathReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetPathStub = nil
-	if fake.setPathReturnsOnCall == nil {
-		fake.setPathReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setPathReturnsOnCall[i] = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
 func (fake *FakeCmd) GetArgs() []string {
 	fake.getArgsMutex.Lock()
 	ret, specificReturn := fake.getArgsReturnsOnCall[len(fake.getArgsArgsForCall)]
@@ -777,59 +608,6 @@ func (fake *FakeCmd) GetArgsReturnsOnCall(i int, result1 []string) {
 	}
 	fake.getArgsReturnsOnCall[i] = struct {
 		result1 []string
-	}{result1}
-}
-
-func (fake *FakeCmd) SetArgs(arg1 []string) command.Cmd {
-	var arg1Copy []string
-	if arg1 != nil {
-		arg1Copy = make([]string, len(arg1))
-		copy(arg1Copy, arg1)
-	}
-	fake.setArgsMutex.Lock()
-	ret, specificReturn := fake.setArgsReturnsOnCall[len(fake.setArgsArgsForCall)]
-	fake.setArgsArgsForCall = append(fake.setArgsArgsForCall, struct {
-		arg1 []string
-	}{arg1Copy})
-	fake.recordInvocation("SetArgs", []interface{}{arg1Copy})
-	fake.setArgsMutex.Unlock()
-	if fake.SetArgsStub != nil {
-		return fake.SetArgsStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setArgsReturns.result1
-}
-
-func (fake *FakeCmd) SetArgsCallCount() int {
-	fake.setArgsMutex.RLock()
-	defer fake.setArgsMutex.RUnlock()
-	return len(fake.setArgsArgsForCall)
-}
-
-func (fake *FakeCmd) SetArgsArgsForCall(i int) []string {
-	fake.setArgsMutex.RLock()
-	defer fake.setArgsMutex.RUnlock()
-	return fake.setArgsArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetArgsReturns(result1 command.Cmd) {
-	fake.SetArgsStub = nil
-	fake.setArgsReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetArgsReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetArgsStub = nil
-	if fake.setArgsReturnsOnCall == nil {
-		fake.setArgsReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setArgsReturnsOnCall[i] = struct {
-		result1 command.Cmd
 	}{result1}
 }
 
@@ -873,59 +651,6 @@ func (fake *FakeCmd) GetEnvReturnsOnCall(i int, result1 []string) {
 	}{result1}
 }
 
-func (fake *FakeCmd) SetEnv(arg1 []string) command.Cmd {
-	var arg1Copy []string
-	if arg1 != nil {
-		arg1Copy = make([]string, len(arg1))
-		copy(arg1Copy, arg1)
-	}
-	fake.setEnvMutex.Lock()
-	ret, specificReturn := fake.setEnvReturnsOnCall[len(fake.setEnvArgsForCall)]
-	fake.setEnvArgsForCall = append(fake.setEnvArgsForCall, struct {
-		arg1 []string
-	}{arg1Copy})
-	fake.recordInvocation("SetEnv", []interface{}{arg1Copy})
-	fake.setEnvMutex.Unlock()
-	if fake.SetEnvStub != nil {
-		return fake.SetEnvStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setEnvReturns.result1
-}
-
-func (fake *FakeCmd) SetEnvCallCount() int {
-	fake.setEnvMutex.RLock()
-	defer fake.setEnvMutex.RUnlock()
-	return len(fake.setEnvArgsForCall)
-}
-
-func (fake *FakeCmd) SetEnvArgsForCall(i int) []string {
-	fake.setEnvMutex.RLock()
-	defer fake.setEnvMutex.RUnlock()
-	return fake.setEnvArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetEnvReturns(result1 command.Cmd) {
-	fake.SetEnvStub = nil
-	fake.setEnvReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetEnvReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetEnvStub = nil
-	if fake.setEnvReturnsOnCall == nil {
-		fake.setEnvReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setEnvReturnsOnCall[i] = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
 func (fake *FakeCmd) GetDir() string {
 	fake.getDirMutex.Lock()
 	ret, specificReturn := fake.getDirReturnsOnCall[len(fake.getDirArgsForCall)]
@@ -963,54 +688,6 @@ func (fake *FakeCmd) GetDirReturnsOnCall(i int, result1 string) {
 	}
 	fake.getDirReturnsOnCall[i] = struct {
 		result1 string
-	}{result1}
-}
-
-func (fake *FakeCmd) SetDir(arg1 string) command.Cmd {
-	fake.setDirMutex.Lock()
-	ret, specificReturn := fake.setDirReturnsOnCall[len(fake.setDirArgsForCall)]
-	fake.setDirArgsForCall = append(fake.setDirArgsForCall, struct {
-		arg1 string
-	}{arg1})
-	fake.recordInvocation("SetDir", []interface{}{arg1})
-	fake.setDirMutex.Unlock()
-	if fake.SetDirStub != nil {
-		return fake.SetDirStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setDirReturns.result1
-}
-
-func (fake *FakeCmd) SetDirCallCount() int {
-	fake.setDirMutex.RLock()
-	defer fake.setDirMutex.RUnlock()
-	return len(fake.setDirArgsForCall)
-}
-
-func (fake *FakeCmd) SetDirArgsForCall(i int) string {
-	fake.setDirMutex.RLock()
-	defer fake.setDirMutex.RUnlock()
-	return fake.setDirArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetDirReturns(result1 command.Cmd) {
-	fake.SetDirStub = nil
-	fake.setDirReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetDirReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetDirStub = nil
-	if fake.setDirReturnsOnCall == nil {
-		fake.setDirReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setDirReturnsOnCall[i] = struct {
-		result1 command.Cmd
 	}{result1}
 }
 
@@ -1054,54 +731,6 @@ func (fake *FakeCmd) GetStdinReturnsOnCall(i int, result1 io.Reader) {
 	}{result1}
 }
 
-func (fake *FakeCmd) SetStdin(arg1 io.Reader) command.Cmd {
-	fake.setStdinMutex.Lock()
-	ret, specificReturn := fake.setStdinReturnsOnCall[len(fake.setStdinArgsForCall)]
-	fake.setStdinArgsForCall = append(fake.setStdinArgsForCall, struct {
-		arg1 io.Reader
-	}{arg1})
-	fake.recordInvocation("SetStdin", []interface{}{arg1})
-	fake.setStdinMutex.Unlock()
-	if fake.SetStdinStub != nil {
-		return fake.SetStdinStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setStdinReturns.result1
-}
-
-func (fake *FakeCmd) SetStdinCallCount() int {
-	fake.setStdinMutex.RLock()
-	defer fake.setStdinMutex.RUnlock()
-	return len(fake.setStdinArgsForCall)
-}
-
-func (fake *FakeCmd) SetStdinArgsForCall(i int) io.Reader {
-	fake.setStdinMutex.RLock()
-	defer fake.setStdinMutex.RUnlock()
-	return fake.setStdinArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetStdinReturns(result1 command.Cmd) {
-	fake.SetStdinStub = nil
-	fake.setStdinReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetStdinReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetStdinStub = nil
-	if fake.setStdinReturnsOnCall == nil {
-		fake.setStdinReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setStdinReturnsOnCall[i] = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
 func (fake *FakeCmd) GetStdout() io.Writer {
 	fake.getStdoutMutex.Lock()
 	ret, specificReturn := fake.getStdoutReturnsOnCall[len(fake.getStdoutArgsForCall)]
@@ -1139,54 +768,6 @@ func (fake *FakeCmd) GetStdoutReturnsOnCall(i int, result1 io.Writer) {
 	}
 	fake.getStdoutReturnsOnCall[i] = struct {
 		result1 io.Writer
-	}{result1}
-}
-
-func (fake *FakeCmd) SetStdout(arg1 io.Writer) command.Cmd {
-	fake.setStdoutMutex.Lock()
-	ret, specificReturn := fake.setStdoutReturnsOnCall[len(fake.setStdoutArgsForCall)]
-	fake.setStdoutArgsForCall = append(fake.setStdoutArgsForCall, struct {
-		arg1 io.Writer
-	}{arg1})
-	fake.recordInvocation("SetStdout", []interface{}{arg1})
-	fake.setStdoutMutex.Unlock()
-	if fake.SetStdoutStub != nil {
-		return fake.SetStdoutStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setStdoutReturns.result1
-}
-
-func (fake *FakeCmd) SetStdoutCallCount() int {
-	fake.setStdoutMutex.RLock()
-	defer fake.setStdoutMutex.RUnlock()
-	return len(fake.setStdoutArgsForCall)
-}
-
-func (fake *FakeCmd) SetStdoutArgsForCall(i int) io.Writer {
-	fake.setStdoutMutex.RLock()
-	defer fake.setStdoutMutex.RUnlock()
-	return fake.setStdoutArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetStdoutReturns(result1 command.Cmd) {
-	fake.SetStdoutStub = nil
-	fake.setStdoutReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetStdoutReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetStdoutStub = nil
-	if fake.setStdoutReturnsOnCall == nil {
-		fake.setStdoutReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setStdoutReturnsOnCall[i] = struct {
-		result1 command.Cmd
 	}{result1}
 }
 
@@ -1230,54 +811,6 @@ func (fake *FakeCmd) GetStderrReturnsOnCall(i int, result1 io.Writer) {
 	}{result1}
 }
 
-func (fake *FakeCmd) SetStderr(arg1 io.Writer) command.Cmd {
-	fake.setStderrMutex.Lock()
-	ret, specificReturn := fake.setStderrReturnsOnCall[len(fake.setStderrArgsForCall)]
-	fake.setStderrArgsForCall = append(fake.setStderrArgsForCall, struct {
-		arg1 io.Writer
-	}{arg1})
-	fake.recordInvocation("SetStderr", []interface{}{arg1})
-	fake.setStderrMutex.Unlock()
-	if fake.SetStderrStub != nil {
-		return fake.SetStderrStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setStderrReturns.result1
-}
-
-func (fake *FakeCmd) SetStderrCallCount() int {
-	fake.setStderrMutex.RLock()
-	defer fake.setStderrMutex.RUnlock()
-	return len(fake.setStderrArgsForCall)
-}
-
-func (fake *FakeCmd) SetStderrArgsForCall(i int) io.Writer {
-	fake.setStderrMutex.RLock()
-	defer fake.setStderrMutex.RUnlock()
-	return fake.setStderrArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetStderrReturns(result1 command.Cmd) {
-	fake.SetStderrStub = nil
-	fake.setStderrReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetStderrReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetStderrStub = nil
-	if fake.setStderrReturnsOnCall == nil {
-		fake.setStderrReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setStderrReturnsOnCall[i] = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
 func (fake *FakeCmd) GetExtraFiles() []*os.File {
 	fake.getExtraFilesMutex.Lock()
 	ret, specificReturn := fake.getExtraFilesReturnsOnCall[len(fake.getExtraFilesArgsForCall)]
@@ -1315,59 +848,6 @@ func (fake *FakeCmd) GetExtraFilesReturnsOnCall(i int, result1 []*os.File) {
 	}
 	fake.getExtraFilesReturnsOnCall[i] = struct {
 		result1 []*os.File
-	}{result1}
-}
-
-func (fake *FakeCmd) SetExtraFiles(arg1 []*os.File) command.Cmd {
-	var arg1Copy []*os.File
-	if arg1 != nil {
-		arg1Copy = make([]*os.File, len(arg1))
-		copy(arg1Copy, arg1)
-	}
-	fake.setExtraFilesMutex.Lock()
-	ret, specificReturn := fake.setExtraFilesReturnsOnCall[len(fake.setExtraFilesArgsForCall)]
-	fake.setExtraFilesArgsForCall = append(fake.setExtraFilesArgsForCall, struct {
-		arg1 []*os.File
-	}{arg1Copy})
-	fake.recordInvocation("SetExtraFiles", []interface{}{arg1Copy})
-	fake.setExtraFilesMutex.Unlock()
-	if fake.SetExtraFilesStub != nil {
-		return fake.SetExtraFilesStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setExtraFilesReturns.result1
-}
-
-func (fake *FakeCmd) SetExtraFilesCallCount() int {
-	fake.setExtraFilesMutex.RLock()
-	defer fake.setExtraFilesMutex.RUnlock()
-	return len(fake.setExtraFilesArgsForCall)
-}
-
-func (fake *FakeCmd) SetExtraFilesArgsForCall(i int) []*os.File {
-	fake.setExtraFilesMutex.RLock()
-	defer fake.setExtraFilesMutex.RUnlock()
-	return fake.setExtraFilesArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetExtraFilesReturns(result1 command.Cmd) {
-	fake.SetExtraFilesStub = nil
-	fake.setExtraFilesReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetExtraFilesReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetExtraFilesStub = nil
-	if fake.setExtraFilesReturnsOnCall == nil {
-		fake.setExtraFilesReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setExtraFilesReturnsOnCall[i] = struct {
-		result1 command.Cmd
 	}{result1}
 }
 
@@ -1411,54 +891,6 @@ func (fake *FakeCmd) GetSysProcAttrReturnsOnCall(i int, result1 *syscall.SysProc
 	}{result1}
 }
 
-func (fake *FakeCmd) SetSysProcAttr(arg1 *syscall.SysProcAttr) command.Cmd {
-	fake.setSysProcAttrMutex.Lock()
-	ret, specificReturn := fake.setSysProcAttrReturnsOnCall[len(fake.setSysProcAttrArgsForCall)]
-	fake.setSysProcAttrArgsForCall = append(fake.setSysProcAttrArgsForCall, struct {
-		arg1 *syscall.SysProcAttr
-	}{arg1})
-	fake.recordInvocation("SetSysProcAttr", []interface{}{arg1})
-	fake.setSysProcAttrMutex.Unlock()
-	if fake.SetSysProcAttrStub != nil {
-		return fake.SetSysProcAttrStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setSysProcAttrReturns.result1
-}
-
-func (fake *FakeCmd) SetSysProcAttrCallCount() int {
-	fake.setSysProcAttrMutex.RLock()
-	defer fake.setSysProcAttrMutex.RUnlock()
-	return len(fake.setSysProcAttrArgsForCall)
-}
-
-func (fake *FakeCmd) SetSysProcAttrArgsForCall(i int) *syscall.SysProcAttr {
-	fake.setSysProcAttrMutex.RLock()
-	defer fake.setSysProcAttrMutex.RUnlock()
-	return fake.setSysProcAttrArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetSysProcAttrReturns(result1 command.Cmd) {
-	fake.SetSysProcAttrStub = nil
-	fake.setSysProcAttrReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetSysProcAttrReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetSysProcAttrStub = nil
-	if fake.setSysProcAttrReturnsOnCall == nil {
-		fake.setSysProcAttrReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setSysProcAttrReturnsOnCall[i] = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
 func (fake *FakeCmd) GetProcess() command.Process {
 	fake.getProcessMutex.Lock()
 	ret, specificReturn := fake.getProcessReturnsOnCall[len(fake.getProcessArgsForCall)]
@@ -1496,54 +928,6 @@ func (fake *FakeCmd) GetProcessReturnsOnCall(i int, result1 command.Process) {
 	}
 	fake.getProcessReturnsOnCall[i] = struct {
 		result1 command.Process
-	}{result1}
-}
-
-func (fake *FakeCmd) SetProcess(process *os.Process) command.Cmd {
-	fake.setProcessMutex.Lock()
-	ret, specificReturn := fake.setProcessReturnsOnCall[len(fake.setProcessArgsForCall)]
-	fake.setProcessArgsForCall = append(fake.setProcessArgsForCall, struct {
-		process *os.Process
-	}{process})
-	fake.recordInvocation("SetProcess", []interface{}{process})
-	fake.setProcessMutex.Unlock()
-	if fake.SetProcessStub != nil {
-		return fake.SetProcessStub(process)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setProcessReturns.result1
-}
-
-func (fake *FakeCmd) SetProcessCallCount() int {
-	fake.setProcessMutex.RLock()
-	defer fake.setProcessMutex.RUnlock()
-	return len(fake.setProcessArgsForCall)
-}
-
-func (fake *FakeCmd) SetProcessArgsForCall(i int) *os.Process {
-	fake.setProcessMutex.RLock()
-	defer fake.setProcessMutex.RUnlock()
-	return fake.setProcessArgsForCall[i].process
-}
-
-func (fake *FakeCmd) SetProcessReturns(result1 command.Cmd) {
-	fake.SetProcessStub = nil
-	fake.setProcessReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetProcessReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetProcessStub = nil
-	if fake.setProcessReturnsOnCall == nil {
-		fake.setProcessReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setProcessReturnsOnCall[i] = struct {
-		result1 command.Cmd
 	}{result1}
 }
 
@@ -1587,54 +971,6 @@ func (fake *FakeCmd) GetProcessStateReturnsOnCall(i int, result1 *os.ProcessStat
 	}{result1}
 }
 
-func (fake *FakeCmd) SetProcessState(arg1 *os.ProcessState) command.Cmd {
-	fake.setProcessStateMutex.Lock()
-	ret, specificReturn := fake.setProcessStateReturnsOnCall[len(fake.setProcessStateArgsForCall)]
-	fake.setProcessStateArgsForCall = append(fake.setProcessStateArgsForCall, struct {
-		arg1 *os.ProcessState
-	}{arg1})
-	fake.recordInvocation("SetProcessState", []interface{}{arg1})
-	fake.setProcessStateMutex.Unlock()
-	if fake.SetProcessStateStub != nil {
-		return fake.SetProcessStateStub(arg1)
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fake.setProcessStateReturns.result1
-}
-
-func (fake *FakeCmd) SetProcessStateCallCount() int {
-	fake.setProcessStateMutex.RLock()
-	defer fake.setProcessStateMutex.RUnlock()
-	return len(fake.setProcessStateArgsForCall)
-}
-
-func (fake *FakeCmd) SetProcessStateArgsForCall(i int) *os.ProcessState {
-	fake.setProcessStateMutex.RLock()
-	defer fake.setProcessStateMutex.RUnlock()
-	return fake.setProcessStateArgsForCall[i].arg1
-}
-
-func (fake *FakeCmd) SetProcessStateReturns(result1 command.Cmd) {
-	fake.SetProcessStateStub = nil
-	fake.setProcessStateReturns = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
-func (fake *FakeCmd) SetProcessStateReturnsOnCall(i int, result1 command.Cmd) {
-	fake.SetProcessStateStub = nil
-	if fake.setProcessStateReturnsOnCall == nil {
-		fake.setProcessStateReturnsOnCall = make(map[int]struct {
-			result1 command.Cmd
-		})
-	}
-	fake.setProcessStateReturnsOnCall[i] = struct {
-		result1 command.Cmd
-	}{result1}
-}
-
 func (fake *FakeCmd) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
@@ -1656,48 +992,26 @@ func (fake *FakeCmd) Invocations() map[string][][]interface{} {
 	defer fake.waitMutex.RUnlock()
 	fake.getPathMutex.RLock()
 	defer fake.getPathMutex.RUnlock()
-	fake.setPathMutex.RLock()
-	defer fake.setPathMutex.RUnlock()
 	fake.getArgsMutex.RLock()
 	defer fake.getArgsMutex.RUnlock()
-	fake.setArgsMutex.RLock()
-	defer fake.setArgsMutex.RUnlock()
 	fake.getEnvMutex.RLock()
 	defer fake.getEnvMutex.RUnlock()
-	fake.setEnvMutex.RLock()
-	defer fake.setEnvMutex.RUnlock()
 	fake.getDirMutex.RLock()
 	defer fake.getDirMutex.RUnlock()
-	fake.setDirMutex.RLock()
-	defer fake.setDirMutex.RUnlock()
 	fake.getStdinMutex.RLock()
 	defer fake.getStdinMutex.RUnlock()
-	fake.setStdinMutex.RLock()
-	defer fake.setStdinMutex.RUnlock()
 	fake.getStdoutMutex.RLock()
 	defer fake.getStdoutMutex.RUnlock()
-	fake.setStdoutMutex.RLock()
-	defer fake.setStdoutMutex.RUnlock()
 	fake.getStderrMutex.RLock()
 	defer fake.getStderrMutex.RUnlock()
-	fake.setStderrMutex.RLock()
-	defer fake.setStderrMutex.RUnlock()
 	fake.getExtraFilesMutex.RLock()
 	defer fake.getExtraFilesMutex.RUnlock()
-	fake.setExtraFilesMutex.RLock()
-	defer fake.setExtraFilesMutex.RUnlock()
 	fake.getSysProcAttrMutex.RLock()
 	defer fake.getSysProcAttrMutex.RUnlock()
-	fake.setSysProcAttrMutex.RLock()
-	defer fake.setSysProcAttrMutex.RUnlock()
 	fake.getProcessMutex.RLock()
 	defer fake.getProcessMutex.RUnlock()
-	fake.setProcessMutex.RLock()
-	defer fake.setProcessMutex.RUnlock()
 	fake.getProcessStateMutex.RLock()
 	defer fake.getProcessStateMutex.RUnlock()
-	fake.setProcessStateMutex.RLock()
-	defer fake.setProcessStateMutex.RUnlock()
 	copiedInvocations := map[string][][]interface{}{}
 	for key, value := range fake.invocations {
 		copiedInvocations[key] = value

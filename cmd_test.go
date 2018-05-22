@@ -31,98 +31,135 @@ var _ = Describe("GoCommand", func() {
 
 	Describe("Shim", func() {
 		var (
-			cmd    command.Cmd
-			buffer *bytes.Buffer
+			execCmd *exec.Cmd
+			cmd     command.Cmd
+			buffer  *bytes.Buffer
 		)
 
 		BeforeEach(func() {
-			cmd = command.Command("foo")
 			buffer = new(bytes.Buffer)
+			execCmd = exec.Command("foo", "bar")
 		})
 
-		Describe("SetPath/GetPath", func() {
+		JustBeforeEach(func() {
+			cmd = command.Wrap(execCmd)
+		})
+
+		Describe("GetPath", func() {
 			It("delegates to the underlying cmd.Path", func() {
-				cmd = cmd.SetPath("bar")
-				Expect(cmd.GetPath()).To(Equal("bar"))
+				Expect(cmd.GetPath()).To(Equal("foo"))
 			})
 		})
 
-		Describe("SetArgs/GetArgs", func() {
+		Describe("GetArgs", func() {
 			It("delegates to the underlying cmd.Args", func() {
-				args := []string{"bar", "baz"}
-				cmd = cmd.SetArgs(args)
-				Expect(cmd.GetArgs()).To(Equal(args))
+				Expect(cmd.GetArgs()).To(Equal([]string{"foo", "bar"}))
 			})
 		})
 
-		Describe("SetEnv/GetEnv", func() {
+		Describe("GetEnv", func() {
+			BeforeEach(func() {
+				execCmd.Env = []string{"foo=bar"}
+			})
+
 			It("delegates to the underlying cmd.Env", func() {
-				env := []string{"foo=bar"}
-				cmd = cmd.SetEnv(env)
-				Expect(cmd.GetEnv()).To(Equal(env))
+				Expect(cmd.GetEnv()).To(Equal([]string{"foo=bar"}))
 			})
 		})
 
-		Describe("SetDir/GetDir", func() {
+		Describe("GetDir", func() {
+			BeforeEach(func() {
+				execCmd.Dir = "/foo/bar"
+			})
+
 			It("delegates to the underlying cmd.Dir", func() {
-				cmd = cmd.SetDir("/foo/bar")
 				Expect(cmd.GetDir()).To(Equal("/foo/bar"))
 			})
 		})
 
-		Describe("SetStdin/GetStdin", func() {
+		Describe("GetStdin", func() {
+			BeforeEach(func() {
+				execCmd.Stdin = buffer
+			})
+
 			It("delegates to the underlying cmd.Stdin", func() {
-				stdin := cmd.SetStdin(buffer).GetStdin()
 				writeString(buffer, "foo")
-				Expect(string(readAll(stdin))).To(Equal("foo"))
+				stdin := readAll(cmd.GetStdin())
+				Expect(string(stdin)).To(Equal("foo"))
 			})
 		})
 
-		Describe("SetStdout/GetStdout", func() {
+		Describe("GetStdout", func() {
+			BeforeEach(func() {
+				execCmd.Stdout = buffer
+			})
+
 			It("delegates to the underlying cmd.Stdout", func() {
-				stdout := cmd.SetStdout(buffer).GetStdout()
-				writeString(stdout, "foo")
-				Expect(string(readAll(buffer))).To(Equal("foo"))
+				writeString(cmd.GetStdout(), "foo")
+				Expect(buffer.String()).To(Equal("foo"))
 			})
 		})
 
-		Describe("SetStderr/GetStderr", func() {
+		Describe("GetStderr", func() {
+			BeforeEach(func() {
+				execCmd.Stderr = buffer
+			})
+
 			It("delegates to the underlying cmd.Stderr", func() {
-				stderr := cmd.SetStderr(buffer).GetStderr()
-				writeString(stderr, "foo")
-				Expect(string(readAll(buffer))).To(Equal("foo"))
+				writeString(cmd.GetStderr(), "foo")
+				Expect(buffer.String()).To(Equal("foo"))
 			})
 		})
 
-		Describe("SetExtraFiles/GetExtraFiles", func() {
+		Describe("GetExtraFiles", func() {
+			var extraFiles []*os.File
+
+			BeforeEach(func() {
+				extraFiles = []*os.File{new(os.File)}
+				execCmd.ExtraFiles = extraFiles
+			})
+
 			It("delegates to the underlying cmd.ExtraFiles", func() {
-				extraFiles := []*os.File{new(os.File)}
-				cmd.SetExtraFiles(extraFiles)
 				Expect(cmd.GetExtraFiles()).To(HaveLen(1))
 				Expect(cmd.GetExtraFiles()[0]).To(BeIdenticalTo(extraFiles[0]))
 			})
 		})
 
-		Describe("SetSysProcAttr/GetSysProcAttr", func() {
+		Describe("GetSysProcAttr", func() {
+			var sysProcAttr *syscall.SysProcAttr
+
+			BeforeEach(func() {
+				sysProcAttr = new(syscall.SysProcAttr)
+				execCmd.SysProcAttr = sysProcAttr
+			})
+
 			It("delegates to the underlying cmd.ExtraSysProcAttr", func() {
-				sysProcAttr := new(syscall.SysProcAttr)
-				cmd.SetSysProcAttr(sysProcAttr)
 				Expect(cmd.GetSysProcAttr()).To(BeIdenticalTo(sysProcAttr))
 			})
 		})
 
-		Describe("SetProcess/GetProcess", func() {
+		Describe("GetProcess", func() {
+			var process *os.Process
+
+			BeforeEach(func() {
+				process = &os.Process{Pid: 42}
+				execCmd.Process = process
+			})
+
 			It("delegates to the underlying cmd.Process", func() {
-				process := &os.Process{Pid: 4}
-				cmd.SetProcess(process)
-				Expect(cmd.GetProcess().GetPid()).To(Equal(4))
+				Expect(cmd.GetProcess().GetPid()).To(Equal(42))
 			})
 		})
 
-		Describe("SetProcessState/GetProcessState", func() {
+		Describe("ProcessState", func() {
+			var processState *os.ProcessState
+
+			BeforeEach(func() {
+				processState = new(os.ProcessState)
+				execCmd.ProcessState = processState
+			})
+
 			It("delegates to the underlying cmd.ProcessState", func() {
-				processState := new(os.ProcessState)
-				cmd = cmd.SetProcessState(processState)
 				Expect(cmd.GetProcessState()).To(BeIdenticalTo(processState))
 			})
 		})
