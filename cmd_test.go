@@ -19,6 +19,16 @@ var _ = Describe("GoCommand", func() {
 		})
 	})
 
+	Describe("Wrapper", func() {
+		It("is implemented by Wrap", func() {
+			_ = command.Wrapper(command.Wrap)
+		})
+
+		It("is implemented by fakes.Wrap", func() {
+			_ = command.Wrapper(new(fakes.Wrap).Spy)
+		})
+	})
+
 	Describe("Cmd", func() {
 		It("is implemented by Shim", func() {
 			_ = command.Cmd(new(command.Shim))
@@ -151,7 +161,7 @@ var _ = Describe("GoCommand", func() {
 			})
 		})
 
-		Describe("ProcessState", func() {
+		Describe("GetProcessState", func() {
 			var processState *os.ProcessState
 
 			BeforeEach(func() {
