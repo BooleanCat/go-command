@@ -18,7 +18,7 @@ type BaseCmd interface {
 	Wait() error
 }
 
-//go:generate counterfeiter -o commandfakes/cmd.go . Cmd
+//go:generate counterfeiter -o commandfakes/cmd.go -fake-name Cmd . Cmd
 type Cmd interface {
 	BaseCmd
 
@@ -34,6 +34,9 @@ type Cmd interface {
 	GetProcess() Process
 	GetProcessState() *os.ProcessState
 }
+
+//go:generate counterfeiter -o commandfakes/wrap.go -fake-name Wrap . Wrapper
+type Wrapper func(*exec.Cmd) Cmd
 
 type Shim struct {
 	cmd *exec.Cmd

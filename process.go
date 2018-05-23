@@ -9,7 +9,7 @@ type BaseProcess interface {
 	Wait() (*os.ProcessState, error)
 }
 
-//go:generate counterfeiter -o commandfakes/process.go . Process
+//go:generate counterfeiter -o commandfakes/process.go -fake-name Process . Process
 type Process interface {
 	BaseProcess
 

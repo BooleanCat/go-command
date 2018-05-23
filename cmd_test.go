@@ -24,8 +24,8 @@ var _ = Describe("GoCommand", func() {
 			_ = command.Cmd(new(command.Shim))
 		})
 
-		It("is implemented by FakeCmd", func() {
-			_ = command.Cmd(new(fakes.FakeCmd))
+		It("is implemented by commandfakes.Cmd", func() {
+			_ = command.Cmd(new(fakes.Cmd))
 		})
 	})
 

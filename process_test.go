@@ -21,8 +21,8 @@ var _ = Describe("GoCommand", func() {
 			_ = command.Process(new(command.ProcessShim))
 		})
 
-		It("is implemented by FakeProcess", func() {
-			_ = command.Process(new(fakes.FakeProcess))
+		It("is implemented by commandfakes.Process", func() {
+			_ = command.Process(new(fakes.Process))
 		})
 	})
 
